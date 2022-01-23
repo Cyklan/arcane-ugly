@@ -8,8 +8,9 @@ export interface Player {
 
 const schema = new Schema<Player>({
   displayName: { type: String, required: true },
-  character: { type: Schema.Types.ObjectId, ref: "Character", required: true }
-})
+  character: { type: Schema.Types.Mixed, ref: "Character", required: true },
+});
+export { schema };
 
 const PlayerModel = model<Player>("Player", schema);
 
