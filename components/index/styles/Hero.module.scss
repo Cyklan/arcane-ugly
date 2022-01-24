@@ -1,0 +1,30 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  width: 70%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: 5rem;
+}
+
+.heroText {
+  margin: 0;
+  font-size: 2rem;
+  max-width: 80%;
+}
+
+.hero a {
+  text-decoration: underline double;
+}
