@@ -1,3 +1,3 @@
-export default class Character {
-
+export default interface Character {
+  name: string;
 }
