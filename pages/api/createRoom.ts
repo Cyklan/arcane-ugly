@@ -8,12 +8,28 @@ interface ResponseData {
   playerId: string;
 }
 
-export default async function handler(
+const limiter = require("lambda-rate-limiter")({
+  interval: 60 * 1000,
+});
+
+export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
-  connect(process.env.MONGO_URI!);
-  const room = await Room.create({})
+  if (req.method !== "POST") {
+    res.status(405).end();
+    return;
+  }
 
-  res.status(200).send({ roomCode: room.roomCode, playerId: v4() });
+  limiter
+    .check(1, req.socket.remoteAddress)
+    .then(async () => {
+      connect(process.env.MONGO_URI!);
+      const room = await Room.create({});
+
+      res.status(200).send({ roomCode: room.roomCode, playerId: v4() });
+    })
+    .catch(() => {
+      res.status(429).end();
+    });
 }
