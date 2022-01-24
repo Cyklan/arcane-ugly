@@ -25,7 +25,7 @@ export default function handler(
       connect(process.env.MONGO_URI!).then(() => {
         Room.find().then((rooms) => {
           rooms
-            .filter((room) => !(room.roomCode in channels))
+            .filter((room) => !(channels.includes(room.roomCode)))
             .forEach((room) => {
               room.delete();
             });
