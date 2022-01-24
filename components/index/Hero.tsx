@@ -7,11 +7,11 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ title, children }) => {
   return (
-    <div className={styles.heroContainer}>
+    <div className={styles["hero-container"]}>
       <div className={styles.hero}>
         <HeroChild>
-          <h1 className={styles.heroTitle}>{title}</h1>
-          <p className={styles.heroText}>
+          <h1 className={styles["hero-title"]}>{title}</h1>
+          <p className={styles["hero-text"]}>
             AU ONLINE is a platform to play{" "}
             <a href="https://arcaneugly.com">Arcane Ugly</a> online with your
             friends.
@@ -20,8 +20,8 @@ const Hero: React.FC<HeroProps> = ({ title, children }) => {
           </p>
         </HeroChild>
         <HeroChild>
-          <h1 className={styles.heroTitle}>Beta Access</h1>
-          <p className={styles.heroText}>
+          <h1 className={styles["hero-title"]}>Beta Access</h1>
+          <p className={styles["hero-text"]}>
             It&apos;s obviously not done yet, but it&apos;s coming soon.
             <br />
             If you want to participate in the beta, you can send me an{" "}
